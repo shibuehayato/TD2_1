@@ -2,12 +2,13 @@
 #include"Model.h"
 #include"WorldTransform.h"
 #include"Input.h"
+#include "Function.h"
 
 class Player {
 
 public:
 
-	void Initalize();
+	void Initalize(Model*model);
 
 	void Update();
 
