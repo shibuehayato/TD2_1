@@ -9,7 +9,7 @@ GameScene::~GameScene() {
 	delete model_;
 	delete player_;
 	delete debugCamera_;
-
+	delete stage_;//ステージ
 }
 
 void GameScene::Initialize() {
@@ -28,6 +28,9 @@ void GameScene::Initialize() {
 
 	debugCamera_ = new DebugCamera(1280, 720);
 
+	stage_ = new Stage();
+	stage_->Initialize();//ステージ
+
 	AxisIndicator::GetInstance()->SetVisible(true);
 	AxisIndicator::GetInstance()->SetTargetViewProjection(&viewProjection_);
 
@@ -38,6 +41,7 @@ void GameScene::Initialize() {
 void GameScene::Update() {
 
 	player_->Update();
+	stage_->Update();
 
 	if (isDebugCameraActive_ == true) {
 		debugCamera_->Update();
@@ -65,6 +69,7 @@ void GameScene::Draw() {
 	/// <summary>
 	/// ここに背景スプライトの描画処理を追加できる
 	/// </summary>
+	stage_->Draw2DFar();
 
 	// スプライト描画後処理
 	Sprite::PostDraw();
