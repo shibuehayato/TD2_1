@@ -6,6 +6,7 @@
 #include "PrimitiveDrawer.h"
 #include "TextureManager.h"
 #include "WinApp.h"
+#include "TitleScene.h"
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -17,6 +18,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	AxisIndicator* axisIndicator = nullptr;
 	PrimitiveDrawer* primitiveDrawer = nullptr;
 	GameScene* gameScene = nullptr;
+	
+	TitleScene* titleScene = nullptr;
 
 	// ゲームウィンドウの作成
 	win = WinApp::GetInstance();
@@ -61,9 +64,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	gameScene = new GameScene();
 	gameScene->Initialize();
 
-	SceneType sceneNo = SceneType::kGamePlay;
+	titleScene = new TitleScene();
+	titleScene->Initialize();
 
+	SceneType sceneNo = SceneType::kTitle;
 
+	
 
 	// メインループ
 	while (true) {
@@ -79,6 +85,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		switch (sceneNo) {
 		case SceneType::kTitle:
+			
+			titleScene->Update();
+
+			if (titleScene->IsSceneEnd()) {
+			sceneNo = titleScene->NextScene();
+
+			}
+
 			break;
 		case SceneType::kGamePlay:
 			// ゲームシーンの毎フレーム処理
@@ -102,6 +116,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		switch (sceneNo) {
 		case SceneType::kTitle:
+			titleScene->Draw();
+
 			break;
 		case SceneType::kGamePlay:
 			// ゲームシーンの描画
