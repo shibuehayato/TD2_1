@@ -109,4 +109,32 @@ void GameScene::Draw() {
 #pragma endregion
 }
 
-void GameScene::CheckAllColisions() {}
+void GameScene::CheckAllColisions() { 
+	
+	Vector3 posA, posB;
+
+	#pragma region // 自キャラと敵弾の当たり判定
+	//posA = player_->GetWorldPosition();
+
+	//for (Enemy* enemy : enemys_) {
+	//	posB = enemy->GetWorldPosition();
+
+	//	float X = (posB.x - posA.x);
+	//	float Y = (posB.y - posA.y);
+	//	float Z = (posB.z - posA.z);
+
+	//	float center = X * X + Y * Y + Z * Z;
+	//	float R1 = 3.0f; // 自分で決める
+	//	float R2 = 1.0f; // 自分で決める
+	//	float RR = (R1 + R2);
+
+	//	if (center <= (RR * RR)) {
+	//		// 自キャラの衝突時コールバックを呼び出す
+	//		player_->OnColision();
+	//		// 敵の衝突時コールバックを呼び出す
+	//		bullet->OnColision();
+	//	}
+	//}
+#pragma endregion
+
+}
