@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "DebugCamera.h"
 #include"Stage.h"
+#include"Road.h"
 
 /// <summary>
 /// ゲームシーン
@@ -43,6 +44,7 @@ public: // メンバ関数
 	/// </summary>
 	void Draw();
 
+
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
 	Input* input_ = nullptr;
@@ -54,7 +56,10 @@ private: // メンバ変数
 	ViewProjection viewProjection_;
 	Player* player_ = nullptr;
 
-	Stage* stage_ = nullptr;//ステージ
+	Stage* stage_ = nullptr; // ステージ
+
+	Road* road_ = nullptr;
+	Model* modelRoad_ = nullptr;
 
 	bool isDebugCameraActive_ = false;
 

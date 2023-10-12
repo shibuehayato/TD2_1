@@ -5,11 +5,12 @@
 
 GameScene::GameScene() {}
 
-GameScene::~GameScene() { 
+GameScene::~GameScene() {
 	delete model_;
 	delete player_;
 	delete debugCamera_;
-	delete stage_;//ステージ
+	delete stage_; // ステージ
+	delete road_;
 }
 
 void GameScene::Initialize() {
@@ -28,20 +29,27 @@ void GameScene::Initialize() {
 
 	debugCamera_ = new DebugCamera(1280, 720);
 
+	modelRoad_ = Model::Create();
 	stage_ = new Stage();
-	stage_->Initialize();//ステージ
+	stage_->Initialize(); // ステージ
+
+	road_ = new Road();//道
+	road_->Initialize(modelRoad_);
+	
+	viewProjection_.translation_.y=1;
+	
+	viewProjection_.rotation_;
+	
 
 	AxisIndicator::GetInstance()->SetVisible(true);
 	AxisIndicator::GetInstance()->SetTargetViewProjection(&viewProjection_);
-
-
-
 }
 
 void GameScene::Update() {
 
 	player_->Update();
 	stage_->Update();
+	road_->Update();
 
 	if (isDebugCameraActive_ == true) {
 		debugCamera_->Update();
@@ -53,8 +61,6 @@ void GameScene::Update() {
 
 		viewProjection_.UpdateMatrix();
 	}
-
-
 }
 
 void GameScene::Draw() {
@@ -70,7 +76,6 @@ void GameScene::Draw() {
 	/// ここに背景スプライトの描画処理を追加できる
 	/// </summary>
 	stage_->Draw2DFar();
-
 	// スプライト描画後処理
 	Sprite::PostDraw();
 	// 深度バッファクリア
@@ -85,8 +90,7 @@ void GameScene::Draw() {
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
 	player_->Draw(viewProjection_);
-
-
+	road_->Draw3D(viewProjection_);
 
 	// 3Dオブジェクト描画後処理
 	Model::PostDraw();

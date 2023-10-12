@@ -6,6 +6,7 @@
 #include "Sprite.h"
 #include "ViewProjection.h"
 #include "WorldTransform.h"
+#include "Function.h"
 #include <cassert>
 
 class Stage {
@@ -36,7 +37,7 @@ public:
 	void Draw2DFar();
 
 private:
-	//BG(スプライト)
+	// BG(スプライト)
 	uint32_t textureHandleBG_ = 0;
 	Sprite* spriteBG_ = nullptr;
 };
