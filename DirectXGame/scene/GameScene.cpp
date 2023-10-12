@@ -11,6 +11,7 @@ GameScene::~GameScene() {
 	delete debugCamera_;
 	delete stage_; // ステージ
 	delete road_;
+	delete enemy_;
 }
 
 void GameScene::Initialize() {
@@ -27,6 +28,11 @@ void GameScene::Initialize() {
 
 	player_->Initalize(model_);
 
+	modelEnemy_ = Model::Create();
+	enemy_ = new Enemy();
+	enemy_->Initialize(modelEnemy_);
+
+
 	debugCamera_ = new DebugCamera(1280, 720);
 
 	modelRoad_ = Model::Create();
@@ -36,7 +42,7 @@ void GameScene::Initialize() {
 	road_ = new Road();//道
 	road_->Initialize(modelRoad_);
 	
-	viewProjection_.translation_.y=1;
+	viewProjection_.translation_.y=2;
 	
 	viewProjection_.rotation_;
 	
@@ -48,9 +54,10 @@ void GameScene::Initialize() {
 void GameScene::Update() {
 
 	player_->Update();
+	enemy_->Update();
 	stage_->Update();
 	road_->Update();
-
+	
 	if (isDebugCameraActive_ == true) {
 		debugCamera_->Update();
 		viewProjection_.matView = debugCamera_->GetViewProjection().matView;
@@ -90,6 +97,7 @@ void GameScene::Draw() {
 	/// ここに3Dオブジェクトの描画処理を追加できる
 	/// </summary>
 	player_->Draw(viewProjection_);
+	enemy_->Draw(viewProjection_);
 	road_->Draw3D(viewProjection_);
 
 	// 3Dオブジェクト描画後処理
