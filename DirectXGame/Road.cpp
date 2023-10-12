@@ -17,7 +17,6 @@ void Road::Initialize(Model* model) {
 }
 
 void Road::Update() {
-
 	worldTransform_.matWorld_ = MakeAffineMatrix(
 	    worldTransform_.scale_, worldTransform_.rotation_, worldTransform_.translation_);
 
