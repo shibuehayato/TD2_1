@@ -39,6 +39,14 @@ void GameScene::Update() {
 
 	player_->Update();
 
+	#ifdef _DEBUG
+
+	if (input_->PushKey(DIK_E)) {
+	    isDebugCameraActive_ = true;
+	}
+
+#endif // DEBUG
+
 	if (isDebugCameraActive_ == true) {
 		debugCamera_->Update();
 		viewProjection_.matView = debugCamera_->GetViewProjection().matView;

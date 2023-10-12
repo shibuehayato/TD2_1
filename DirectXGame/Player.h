@@ -14,6 +14,8 @@ public:
 
 	void Draw(ViewProjection& viewProjection);
 
+	void OnColision();
+
 private:
 
 	WorldTransform worldTransform_;
