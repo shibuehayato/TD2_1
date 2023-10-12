@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Input.h"
 #include "Model.h"
 #include "WorldTransform.h"
@@ -11,18 +11,18 @@ class Obstacle {
 
 	public:
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
-	/// <param name="model">ƒ‚ƒfƒ‹</param>
+	/// <param name="model">ãƒ¢ãƒ‡ãƒ«</param>
 	void Initialize(Model* model, uint32_t textureHandle, Vector3 enemyPosition);
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 	/// <summary>
-	/// •`‰æ
+	/// æç”»
 	/// </summary>
-	/// <param name="viewProjection">ƒrƒ…[ƒvƒƒWƒFƒNƒVƒ‡ƒ“</param>
+	/// <param name="viewProjection">ãƒ“ãƒ¥ãƒ¼ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³</param>
 	void Draw(const ViewProjection& viewProjection);
 
 	~Obstacle();
@@ -41,9 +41,7 @@ class Obstacle {
 
 	    Input* input_ = nullptr;
 
-		Player* player_ = nullptr;
 
-	    GameScene* gameScene_ = nullptr;
 
 
 };

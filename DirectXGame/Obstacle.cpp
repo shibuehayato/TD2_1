@@ -1,4 +1,4 @@
-#include "Obstacle.h"
+﻿#include "Obstacle.h"
 #include "cassert"
 #include "ImGuiManager.h"
 #include "Player.h"
@@ -11,6 +11,13 @@ void Obstacle::Initialize(Model* model, uint32_t textureHandle, Vector3 enemyPos
 
 	textureHandle_ = textureHandle;
 
+	worldTransform_.Initialize();
+
+	worldTransform_.scale_ = {3.0f, 3.0f, 3.0f};
+
+	worldTransform_.rotation_ = {0.0f, 0.0f, 0.0f};
+
+	worldTransform_.translation_ = enemyPosition;
 
 
 }
