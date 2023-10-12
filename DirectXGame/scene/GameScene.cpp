@@ -116,8 +116,8 @@ void GameScene::CheckAllColisions() {
 	#pragma region // 自キャラと敵弾の当たり判定
 	//posA = player_->GetWorldPosition();
 
-	//for (Enemy* enemy : enemys_) {
-	//	posB = enemy->GetWorldPosition();
+	//for (Obstacle* obstacle : obstacles) {
+	//	posB = obstacle->GetWorldPosition();
 
 	//	float X = (posB.x - posA.x);
 	//	float Y = (posB.y - posA.y);
@@ -132,7 +132,7 @@ void GameScene::CheckAllColisions() {
 	//		// 自キャラの衝突時コールバックを呼び出す
 	//		player_->OnColision();
 	//		// 敵の衝突時コールバックを呼び出す
-	//		bullet->OnColision();
+	//		obstacle->OnColision();
 	//	}
 	//}
 #pragma endregion
