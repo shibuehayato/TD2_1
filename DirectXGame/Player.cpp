@@ -10,7 +10,7 @@ void Player::Initalize(Model* model) {
 
 	textureHandle_ = TextureManager::Load("white1x1.png");
 
-	worldTransform_.scale_ = {1.0f, 1.0f, 1.0f};
+	worldTransform_.scale_ = {0.5f, 0.5f, 0.5f};
 
 	worldTransform_.rotation_ = {0.0f, 0.0f, 0.0f};
 
@@ -26,7 +26,7 @@ void Player::Update() {
 	Vector3 move = {0, 0, 0};
 	
 
-	const float kCharacterSpeed = 0.3f;
+	const float kCharacterSpeed = 0.05f;
 
 	if (input_->PushKey(DIK_A)) {
 		move.x -= kCharacterSpeed;
@@ -36,7 +36,7 @@ void Player::Update() {
 	}
 
 	if (input_->TriggerKey(DIK_SPACE) && worldTransform_.translation_.y == 0) {
-		velocity.y = 5.0f;
+		velocity.y = 0.3f;
 	}
 
 	velocity.y += acceleration.y;

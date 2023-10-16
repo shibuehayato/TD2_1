@@ -8,7 +8,7 @@ void Enemy::Initialize(Model* model, const Vector3& position) {
 	// 引数で初期座標をリセット
 	worldTransform_.translation_ = position;
 	textureHandle_ = TextureManager::Load("uvChecker.png");
-	worldTransform_.scale_ = {1.0f, 1.0f, 1.0f};
+	worldTransform_.scale_ = {0.7f, 0.7f, 0.7f};
 	worldTransform_.Initialize();
 }
 

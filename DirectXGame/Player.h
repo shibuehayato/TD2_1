@@ -34,7 +34,7 @@ private:
 	Input* input_ = nullptr;
 
 	Vector3 velocity = {0, 0, 0};
-	Vector3 acceleration = {0, -0.4f, 0};
+	Vector3 acceleration = {0, -0.01f, 0};
 
 	// デスフラグ
 	bool isDead_ = false;

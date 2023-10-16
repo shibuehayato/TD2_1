@@ -133,8 +133,8 @@ void GameScene::Draw() {
 
 void GameScene::CheckAllCollision()
 {
-	float playerRadius = 1.0f;
-	float enemyRadius = 1.0f;
+	float playerRadius = 0.4f;
+	float enemyRadius = 0.4f;
 
 	// 判定対象AとBの座標
 	Vector3 posA, posB;
