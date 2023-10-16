@@ -10,7 +10,7 @@ void Player::Initalize(Model* model) {
 
 	textureHandle_ = TextureManager::Load("white1x1.png");
 
-	worldTransform_.scale_ = {3.0f, 3.0f, 3.0f};
+	worldTransform_.scale_ = {1.0f, 1.0f, 1.0f};
 
 	worldTransform_.rotation_ = {0.0f, 0.0f, 0.0f};
 
