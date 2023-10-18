@@ -81,6 +81,9 @@
     <ClCompile Include="Road.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
@@ -190,6 +193,9 @@
     </ClInclude>
     <ClInclude Include="TitleScene.h">
       <Filter>ヘッダー ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
