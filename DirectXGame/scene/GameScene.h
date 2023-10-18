@@ -118,6 +118,8 @@ private: // メンバ変数
 	// 待機タイマー
 	int32_t waitTimer_;
 
+
+
 	//clearTimer_の待機秒
 	int timeSe_;
 	//Clearへ行くTimer

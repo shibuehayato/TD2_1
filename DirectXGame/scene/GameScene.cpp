@@ -52,8 +52,13 @@ void GameScene::Initialize() {
 
 	LoadEnemyPopData();
 
-	timeSe_ = 60;
+	timeSe_ = 10;
 	clearTimer_ = timeSe_ * 60;
+
+	/*isWaiting_ = false;
+	waitTimer_ = 0;*/
+	enemyPopCommands = {};
+
 
 }
 
@@ -80,11 +85,9 @@ void GameScene::Update() {
 	}
 	else
 	if (isSceneEnd == true) {
-
+	
 	isSceneEnd = false;
 	}
-
-
 
 
 

@@ -2,16 +2,21 @@
 
 TitleScene::TitleScene() {}
 
-TitleScene::~TitleScene() {}
+TitleScene::~TitleScene() { 
+	delete title_; 
+
+}
 
 void TitleScene::Initialize() {
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
 	audio_ = Audio::GetInstance();
 
+	// レティクル用テクスチャ取得
+	uint32_t textureTitle = TextureManager::Load("Title.png");
 
-
-
+	title_ = Sprite::Create(textureTitle, {640.0f, 360.0f}, {1.0f, 1.0f, 1.0f, 1}, {0.5f, 0.5f});
+	
 
 }
 
@@ -64,7 +69,7 @@ void TitleScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 
-	
+	 title_->Draw();
 
 	/// </summary>
 
