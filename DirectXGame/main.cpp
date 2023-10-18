@@ -97,10 +97,21 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		case SceneType::kGamePlay:
 			// ゲームシーンの毎フレーム処理
 			gameScene->Update();
+
+			
+			sceneNo = gameScene->NextScene();
+			
+
 			break;
 		case SceneType::kGameOver:
 			break;
 		case SceneType::kClearGame:
+
+			if (input->TriggerKey(DIK_SPACE)) {
+
+			sceneNo = SceneType::kTitle;
+			}
+
 			break;
 		default:
 			break;

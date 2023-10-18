@@ -51,6 +51,10 @@ void GameScene::Initialize() {
 	AxisIndicator::GetInstance()->SetTargetViewProjection(&viewProjection_);
 
 	LoadEnemyPopData();
+
+	timeSe_ = 60;
+	clearTimer_ = timeSe_ * 60;
+
 }
 
 void GameScene::Update() {
@@ -66,6 +70,23 @@ void GameScene::Update() {
 	}
 
 	CheckAllCollision();
+
+	clearTimer_--;
+
+	if (clearTimer_ <= 0) {
+		clearTimer_ = timeSe_ * 60;
+	isSceneEnd = true;
+	
+	}
+	else
+	if (isSceneEnd == true) {
+
+	isSceneEnd = false;
+	}
+
+
+
+
 
 	if (isDebugCameraActive_ == true) {
 		debugCamera_->Update();
