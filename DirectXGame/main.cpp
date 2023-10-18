@@ -98,9 +98,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			// ゲームシーンの毎フレーム処理
 			gameScene->Update();
 
-			
+			if (gameScene->IsSceneEnd()) {
 			sceneNo = gameScene->NextScene();
 			
+			gameScene->Reset();
+
+			}
 
 			break;
 		case SceneType::kGameOver:

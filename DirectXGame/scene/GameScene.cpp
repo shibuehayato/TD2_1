@@ -57,7 +57,7 @@ void GameScene::Initialize() {
 
 	/*isWaiting_ = false;
 	waitTimer_ = 0;*/
-	enemyPopCommands = {};
+	//enemyPopCommands = {};
 
 
 }
@@ -68,18 +68,30 @@ void GameScene::Update() {
 	stage_->Update();
 	road_->Update();
 	
+	enemys_.remove_if([](Enemy* enemy) {
+		if (enemy->IsDead()) {
+			delete enemy;
+
+			return true;
+		}
+
+		return false;
+	});
+
+
 	// 敵キャラの更新
 	UpdateEnemyPopCommands();
+	
+	
 	for (Enemy* enemy : enemys_) {
 		enemy->Update();
 	}
-
 	CheckAllCollision();
 
 	clearTimer_--;
 
 	if (clearTimer_ <= 0) {
-		clearTimer_ = timeSe_ * 60;
+		
 	isSceneEnd = true;
 	
 	}
@@ -275,4 +287,31 @@ void GameScene::UpdateEnemyPopCommands() {
 			break;
 		}
 	}
+}
+
+void GameScene::Reset() {
+
+	
+	clearTimer_ = timeSe_ * 60;
+
+	viewProjection_.Initialize();
+
+	
+
+	player_->Initalize(model_);
+
+	
+	stage_->Initialize(); // ステージ
+
+	
+	road_->Initialize(modelRoad_);
+
+	for (Enemy* enemy : enemys_) {
+		
+	enemy->OnCollision();
+
+	}
+
+	LoadEnemyPopData();
+
 }
