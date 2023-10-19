@@ -314,7 +314,7 @@ void GameScene::Reset() {
 
 	
 
-	//LoadEnemyPopData();
+	LoadEnemyPopData();
 
 
 }
