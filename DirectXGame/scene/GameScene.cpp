@@ -52,7 +52,7 @@ void GameScene::Initialize() {
 
 	LoadEnemyPopData();
 
-	timeSe_ = 10;
+	timeSe_ = 30;
 	clearTimer_ = timeSe_ * 60;
 
 	/*isWaiting_ = false;
@@ -85,7 +85,11 @@ void GameScene::Update() {
 	
 	for (Enemy* enemy : enemys_) {
 		enemy->Update();
+
 	}
+
+	
+
 	CheckAllCollision();
 
 	clearTimer_--;
@@ -192,10 +196,11 @@ void GameScene::CheckAllCollision()
 		if (Distance.x + Distance.y + Distance.z <=
 		    (playerRadius + enemyRadius) * (playerRadius + enemyRadius)) {
 			// 自キャラの衝突時コールバック関数を呼び出す
+			isGameOver = true;
 			player_->OnCollision();
 			// 敵弾の衝突時コールバック関数を呼び出す
 			enemy->OnCollision();
-		}
+		} 
 	}
 #pragma endregion
 
@@ -291,6 +296,7 @@ void GameScene::UpdateEnemyPopCommands() {
 
 void GameScene::Reset() {
 
+	isGameOver = false;
 	
 	clearTimer_ = timeSe_ * 60;
 
@@ -313,5 +319,6 @@ void GameScene::Reset() {
 	}
 
 	LoadEnemyPopData();
+
 
 }

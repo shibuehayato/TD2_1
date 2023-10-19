@@ -87,6 +87,12 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
+    <ClCompile Include="ClearScene.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverScean.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3d\ViewProjection.h">
@@ -196,6 +202,12 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ClearScene.h">
+      <Filter>ヘッダー ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScean.h">
+      <Filter>ヘッダー ファイル\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

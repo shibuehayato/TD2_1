@@ -19,6 +19,9 @@ void Player::Initalize(Model* model) {
 	worldTransform_.Initialize();
 
 	input_ = Input::GetInstance();
+
+	isDead_ = false;
+
 }
 
 void Player::Update() {
@@ -34,6 +37,10 @@ void Player::Update() {
 	} else if (input_->PushKey(DIK_D)) {
 		move.x += kCharacterSpeed;
 	}
+
+	/*if (input_->PushKey(DIK_S)) {
+		move.z -= kCharacterSpeed;
+	}*/
 
 	if (input_->TriggerKey(DIK_SPACE) && worldTransform_.translation_.y == 0) {
 		velocity.y = 0.3f;

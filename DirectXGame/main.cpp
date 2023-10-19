@@ -7,6 +7,8 @@
 #include "TextureManager.h"
 #include "WinApp.h"
 #include "TitleScene.h"
+#include "ClearScene.h"
+#include "GameOverScean.h"
 
 // Windowsアプリでのエントリーポイント(main関数)
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
@@ -20,6 +22,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	GameScene* gameScene = nullptr;
 	
 	TitleScene* titleScene = nullptr;
+
+	ClearScene* clearScene = nullptr;
+
+	GameOverScean* gameOverScean = nullptr;
 
 	// ゲームウィンドウの作成
 	win = WinApp::GetInstance();
@@ -67,6 +73,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	titleScene = new TitleScene();
 	titleScene->Initialize();
 
+	clearScene = new ClearScene();
+	clearScene->Initialize();
+
+	gameOverScean = new GameOverScean();
+
+	gameOverScean->Initialize();
+
 	SceneType sceneNo = SceneType::kTitle;
 
 	
@@ -98,7 +111,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			// ゲームシーンの毎フレーム処理
 			gameScene->Update();
 
-			if (gameScene->IsSceneEnd()) {
+			if (gameScene->IsSceneEnd()||gameScene->IsGameOver()) {
 			sceneNo = gameScene->NextScene();
 			
 			gameScene->Reset();
@@ -107,12 +120,20 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 			break;
 		case SceneType::kGameOver:
+			gameOverScean->Update();
+
+			if (gameOverScean->IsSceneEnd()) {
+			sceneNo = gameOverScean->NextScene();
+			}
+
+
 			break;
 		case SceneType::kClearGame:
 
-			if (input->TriggerKey(DIK_SPACE)) {
+			clearScene->Update();
 
-			sceneNo = SceneType::kTitle;
+			if (clearScene->IsSceneEnd()) {
+			sceneNo = clearScene->NextScene();
 			}
 
 			break;
@@ -138,8 +159,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			gameScene->Draw();
 			break;
 		case SceneType::kGameOver:
+
+			gameOverScean->Draw();
+
 			break;
 		case SceneType::kClearGame:
+
+			clearScene->Draw();
 			break;
 		default:
 			break;
