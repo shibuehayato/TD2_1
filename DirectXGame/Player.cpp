@@ -42,6 +42,15 @@ void Player::Update() {
 		move.z -= kCharacterSpeed;
 	}*/
 
+	// 移動限界座標
+	const float kMoveLimitX = 4;
+	const float kMoveLimitY = -4;
+	// 範囲を超えない処理
+	worldTransform_.translation_.x = max(worldTransform_.translation_.x, -kMoveLimitX);
+	worldTransform_.translation_.x = min(worldTransform_.translation_.x, +kMoveLimitX);
+	worldTransform_.translation_.y = max(worldTransform_.translation_.y, -kMoveLimitY);
+	worldTransform_.translation_.y = min(worldTransform_.translation_.y, +kMoveLimitY);
+
 	if (input_->TriggerKey(DIK_SPACE) && worldTransform_.translation_.y == 0) {
 		velocity.y = 0.3f;
 	}
