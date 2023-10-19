@@ -62,9 +62,11 @@ public: // メンバ関数
 	SceneType NextScene() {
 
 		if (isSceneEnd == true) {
+			audio_->StopWave(voiceHandle_);
 		return SceneType::kClearGame;
 		} else
 		if (isGameOver == true) {
+		audio_->StopWave(voiceHandle_);
 		return SceneType::kGameOver;
 		}
 		return SceneType::kGamePlay;
@@ -129,6 +131,10 @@ private: // メンバ変数
 	//Clearへ行くTimer
 	int clearTimer_;
 
+	//サウンドハンドル
+	uint32_t soundDataHandle_ = 0;
+
+	uint32_t voiceHandle_ = 0;
 
 	/// <summary>
 	/// ゲームシーン用

@@ -61,6 +61,12 @@ private: // メンバ変数
 
 	Sprite* clear_ = nullptr;
 
+	// サウンドハンドル
+	uint32_t soundDataHandle_ = 0;
+
+	uint32_t voiceHandle_ = 0;
+
+
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>
