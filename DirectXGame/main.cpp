@@ -105,6 +105,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			sceneNo = titleScene->NextScene();
 
 			}
+			gameScene->Reset();
 
 			break;
 		case SceneType::kGamePlay:
@@ -114,7 +115,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (gameScene->IsSceneEnd()||gameScene->IsGameOver()) {
 			sceneNo = gameScene->NextScene();
 			
-			gameScene->Reset();
+			
 
 			}
 

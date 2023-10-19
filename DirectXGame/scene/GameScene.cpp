@@ -52,7 +52,7 @@ void GameScene::Initialize() {
 
 	LoadEnemyPopData();
 
-	timeSe_ = 30;
+	timeSe_ = 60;
 	clearTimer_ = timeSe_ * 60;
 
 	/*isWaiting_ = false;
