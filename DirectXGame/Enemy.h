@@ -22,7 +22,7 @@ public:
 private:
 	WorldTransform worldTransform_;
 	Model* model_;
-	uint32_t textureHandle_ = 0u;
+	//uint32_t textureHandle_ = 0u;
 	// デスフラグ
 	bool isDead_ = false;
 	// ゲームシーン

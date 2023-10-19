@@ -7,7 +7,8 @@ void Enemy::Initialize(Model* model, const Vector3& position) {
 	model_ = model;
 	// 引数で初期座標をリセット
 	worldTransform_.translation_ = position;
-	textureHandle_ = TextureManager::Load("uvChecker.png");
+	//textureHandle_ = TextureManager::Load("car");
+	model_ = Model::CreateFromOBJ("car", true);
 	worldTransform_.scale_ = {0.7f, 0.7f, 0.7f};
 	worldTransform_.Initialize();
 }
@@ -33,7 +34,8 @@ void Enemy::Draw(ViewProjection& viewProjection) {
 
 	if (isDead_ == false) 
 	{
-		model_->Draw(worldTransform_, viewProjection, textureHandle_);
+		//model_->Draw(worldTransform_, viewProjection, textureHandle_);
+		model_->Draw(worldTransform_, viewProjection );
 	}
 }
 
