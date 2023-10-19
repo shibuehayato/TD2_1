@@ -312,13 +312,18 @@ void GameScene::Reset() {
 	
 	road_->Initialize(modelRoad_);
 
-	for (Enemy* enemy : enemys_) {
-		
+	
+
+	//LoadEnemyPopData();
+
+
+}
+
+void GameScene::EnemyReset() {
+
+for (Enemy* enemy : enemys_) {
+
 	enemy->OnCollision();
-
-	}
-
-	LoadEnemyPopData();
-
+}
 
 }

@@ -89,6 +89,7 @@ public: // メンバ関数
 
 	void Reset();
 
+	void EnemyReset();
 
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
