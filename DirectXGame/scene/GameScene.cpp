@@ -59,10 +59,21 @@ void GameScene::Initialize() {
 	waitTimer_ = 0;*/
 	//enemyPopCommands = {};
 
+	soundDataHandle_ = audio_->LoadWave("Shades_of_the_Past.wav");
+
+	
 
 }
 
 void GameScene::Update() {
+
+	if (!audio_->IsPlaying(voiceHandle_)) {
+
+		voiceHandle_ = audio_->PlayWave(soundDataHandle_,true,0.5);
+	}
+
+
+	audio_->ResumeWave(voiceHandle_);
 
 	player_->Update();
 	stage_->Update();
@@ -87,7 +98,10 @@ void GameScene::Update() {
 		enemy->Update();
 
 	}
+	if (isSceneEnd == true) {
 
+		
+	}
 	
 
 	CheckAllCollision();
@@ -312,13 +326,18 @@ void GameScene::Reset() {
 	
 	road_->Initialize(modelRoad_);
 
-	for (Enemy* enemy : enemys_) {
-		
-	enemy->OnCollision();
-
-	}
+	
 
 	LoadEnemyPopData();
 
+	audio_->PauseWave(voiceHandle_);
+}
 
+void GameScene::EnemyReset() {
+
+for (Enemy* enemy : enemys_) {
+
+	enemy->OnCollision();
+}
+audio_->PauseWave(voiceHandle_);
 }

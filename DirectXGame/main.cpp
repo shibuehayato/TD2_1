@@ -126,7 +126,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (gameOverScean->IsSceneEnd()) {
 			sceneNo = gameOverScean->NextScene();
 			}
-
+			gameScene->EnemyReset();
 
 			break;
 		case SceneType::kClearGame:
@@ -136,6 +136,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			if (clearScene->IsSceneEnd()) {
 			sceneNo = clearScene->NextScene();
 			}
+
+			gameScene->EnemyReset();
 
 			break;
 		default:

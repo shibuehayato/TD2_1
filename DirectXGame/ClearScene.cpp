@@ -2,15 +2,9 @@
 
 ClearScene::ClearScene() {}
 
-ClearScene::~ClearScene() {
-
-delete clear_; 
-
-
-}
+ClearScene::~ClearScene() { delete clear_; }
 
 void ClearScene::Initialize() {
-
 
 	dxCommon_ = DirectXCommon::GetInstance();
 	input_ = Input::GetInstance();
@@ -19,22 +13,29 @@ void ClearScene::Initialize() {
 	// レティクル用テクスチャ取得
 	uint32_t textureTitle = TextureManager::Load("GameClear.png");
 
-	 clear_ = Sprite::Create(textureTitle, {640.0f, 360.0f}, {1.0f, 1.0f, 1.0f, 1}, {0.5f, 0.5f});
-	
+	clear_ = Sprite::Create(textureTitle, {640.0f, 360.0f}, {1.0f, 1.0f, 1.0f, 1}, {0.5f, 0.5f});
 
+	soundDataHandle_ = audio_->LoadWave("victory.wav");
+
+	//voiceHandle_ = audio_->PlayWave(soundDataHandle_, false);
+
+	//audio_->PauseWave(voiceHandle_);
 }
 
 void ClearScene::Update() {
 
-if (input_->TriggerKey(DIK_SPACE)) {
+	if (!audio_->IsPlaying(voiceHandle_)) {
+		
+		voiceHandle_ = audio_->PlayWave(soundDataHandle_);
+	}
 
+	if (input_->TriggerKey(DIK_SPACE)) {
+		audio_->StopWave(voiceHandle_);
 		isSceneEnd = true;
 	} else {
 
 		isSceneEnd = false;
 	}
-
-
 }
 
 void ClearScene::Draw() {
@@ -74,7 +75,7 @@ void ClearScene::Draw() {
 	/// <summary>
 	/// ここに前景スプライトの描画処理を追加できる
 
-	 clear_->Draw();
+	clear_->Draw();
 
 	/// </summary>
 
@@ -82,5 +83,4 @@ void ClearScene::Draw() {
 	Sprite::PostDraw();
 
 #pragma endregion
-
 }
