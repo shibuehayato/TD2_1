@@ -47,8 +47,8 @@ void GameScene::Initialize() {
 	viewProjection_.rotation_;
 	
 
-	AxisIndicator::GetInstance()->SetVisible(true);
-	AxisIndicator::GetInstance()->SetTargetViewProjection(&viewProjection_);
+	/*AxisIndicator::GetInstance()->SetVisible(true);
+	AxisIndicator::GetInstance()->SetTargetViewProjection(&viewProjection_);*/
 
 	LoadEnemyPopData();
 
