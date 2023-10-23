@@ -79,14 +79,14 @@ void Player::Update() {
 
 	worldTransform_.TransferMatrix();
 
-	ImGui::Begin("du");
+	/*ImGui::Begin("du");
 	ImGui::Text(
 	    " x: %f,y: %f z: %f", worldTransform_.translation_.x, worldTransform_.translation_.y,
 	    worldTransform_.translation_.z);
 	ImGui::DragFloat3("Translation", &worldTransform_.translation_.x, 0.01f);
 	ImGui::DragFloat3("Rotation", &worldTransform_.rotation_.x, 0.01f);
 
-	ImGui::End();
+	ImGui::End();*/
 }
 
 void Player::Draw(ViewProjection& viewProjection) {
